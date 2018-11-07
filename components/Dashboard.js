@@ -1,13 +1,15 @@
 import React from 'react'
 import { StyleSheet, Text, View } from 'react-native';
 
-const Dashboard = () => (
-    <View>
+const Dashboard = props => (
+    <View style={{marginTop: 40}}>
         <Text>Dashboard</Text>
-        <View>
-            <Text>Deck Title</Text>
-            <Text>3 cards</Text>
-        </View>
+        {Object.keys(props.screenProps.decks).map(key => (
+            <View key={key}>
+                <Text>{props.screenProps.decks[key].title}</Text>
+                <Text>{props.screenProps.decks[key].questions.length} cards</Text>
+            </View>
+        ))}
     </View>
 )
 

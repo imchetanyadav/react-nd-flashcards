@@ -22,7 +22,8 @@ class AddCard extends React.Component {
                 />
                 <TouchableOpacity
                     onPress={() => {
-                        Alert.alert(`${this.state.question} - ${this.state.answer}`);
+                        this.props.addCard('deck1', this.state.question, this.state.answer)
+                        // Alert.alert(`${this.state.question} - ${this.state.answer}`);
                     }}
                     >
                     <Text>Submit</Text>
