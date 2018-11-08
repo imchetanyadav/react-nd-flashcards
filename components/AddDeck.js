@@ -28,7 +28,7 @@ class AddDeck extends React.Component {
                     style={styles.button}
                     onPress={() => this.props.screenProps.addDeck(this.state.deckName, this.navigateToDeck)}
                 >
-                    <Text style={styles.buttonText}>Submit</Text>
+                    <Text style={styles.buttonText}>Create Deck</Text>
                 </TouchableOpacity>
             </View>
         )

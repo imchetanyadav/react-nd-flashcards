@@ -39,11 +39,11 @@ class Quiz extends React.Component {
                             <CardFlip style={quizStyles.cardContainer} ref={(card) => this.card = card} >
                                 <TouchableOpacity style={[quizStyles.card, quizStyles.card1]} onPress={() => {this.card.flip(); this.toggleAnswerVisible();}} >
                                     <Text style={quizStyles.label}>{this.state.questions[this.state.counter].question}</Text>
-                                    <Text>View Answer</Text>
+                                    <Text>Show Answer</Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={[quizStyles.card, quizStyles.card2]} onPress={() => {this.card.flip(); this.toggleAnswerVisible();}} >
                                     <Text style={quizStyles.label}>{this.state.questions[this.state.counter].answer}</Text>
-                                    <Text>View Question</Text>
+                                    <Text>Hide Answer</Text>
                                 </TouchableOpacity>
                             </CardFlip>
                         </View>
