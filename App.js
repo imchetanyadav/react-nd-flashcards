@@ -18,10 +18,10 @@ export default class App extends React.Component {
       }}))
       Alert.alert('Deck Added');
       callback();
-    }).catch(() => {
+    }).catch(error => {
+      console.log(error)
       Alert.alert('Deck could not added');
     })
-
   }
   addCard = (deckName, question, answer) => {
     this.setState( prevState => ({ decks: {

@@ -7,10 +7,11 @@ class AddDeck extends React.Component {
         deckName: ''
     }
     navigateToDeck = () => {
+        const deckName = this.state.deckName
         this.setState({ deckName: '' })
         this.props.navigation.navigate('DeckView', {
-            deckName: this.state.deckName,
-            title: this.props.screenProps.decks[this.state.deckName].title
+            deckName: deckName,
+            title: this.props.screenProps.decks[deckName].title
         })
     }
     render() {
@@ -19,6 +20,7 @@ class AddDeck extends React.Component {
                 <Text style={styles.title}>What is the title of your new deck?</Text>
                 <TextInput
                     style={styles.formInput}
+                    value={this.state.deckName}
                     placeholder="Deck Title"
                     onChangeText={(text) => this.setState({deckName: text})}
                 />
