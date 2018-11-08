@@ -22,7 +22,6 @@ class Quiz extends React.Component {
     render() {
         return (
             <View>
-                <Text>Quiz</Text>
                 {this.state.counter < this.state.questions.length ?
                     <View style={styles.container}>
                         <Text>{`${this.state.counter+1}/${this.state.questions.length}`}</Text>

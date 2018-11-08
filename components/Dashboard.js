@@ -1,13 +1,11 @@
 import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
-import DeckView from './DeckView'
-import AddCard from './AddCard'
-import Quiz from './Quiz'
+import { createBottomTabNavigator } from 'react-navigation';
+import {Ionicons} from '@expo/vector-icons'
+import AddDeck from './AddDeck'
 
 const Dashboard = props => (
     <View>
-        <Text>Dashboard</Text>
         {Object.keys(props.screenProps.decks).map(key => (
             <View key={key}>
                 <TouchableOpacity
@@ -25,25 +23,27 @@ const Dashboard = props => (
         ))}
     </View>
 )
-
-export default createStackNavigator(
+export default createBottomTabNavigator(
     {
-        Flashcards: Dashboard,
-        DeckView: DeckView,
-        AddCard: AddCard,
-        Quiz: Quiz,
+      Decks: Dashboard,
+      AddDeck: AddDeck,
     },
     {
-        initialRouteName: 'Flashcards',
-        navigationOptions: ({ navigation }) => ({
-            title: (navigation.state.params && navigation.state.params.title ) ? navigation.state.params.title : navigation.state.routeName,
-            headerStyle: {
-                backgroundColor: '#f4511e',
-              },
-              headerTintColor: '#fff',
-              headerTitleStyle: {
-                fontWeight: 'bold',
-              },
-        })
+      navigationOptions: ({ navigation }) => ({
+        tabBarIcon: ({ focused, horizontal, tintColor }) => {
+          const { routeName } = navigation.state;
+          let iconName;
+          if (routeName === 'Decks') {
+            iconName = `md-list-box`;
+          } else if (routeName === 'AddDeck') {
+            iconName = `ios-add-circle${focused ? '' : '-outline'}`;
+          }
+          return <Ionicons name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
+        },
+      }),
+      tabBarOptions: {
+        activeTintColor: 'tomato',
+        inactiveTintColor: 'gray',
+      },
     }
 );

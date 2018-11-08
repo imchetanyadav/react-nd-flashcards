@@ -1,15 +1,16 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-import { createStackNavigator } from 'react-navigation';
 
 class AddDeck extends React.Component {
+    static navigationOptions = {
+        title: 'Add Deck',
+    };
     state = {
         deckName: ''
     }
     render() {
         return (
             <View>
-                <Text>AddDeck</Text>
                 <Text>What is the title of your new deck?</Text>
                 <TextInput
                     style={{height: 40}}
@@ -19,6 +20,12 @@ class AddDeck extends React.Component {
                 <TouchableOpacity
                     onPress={() => {
                         this.props.screenProps.addDeck(this.state.deckName)
+                        setTimeout(() => {
+                            this.props.navigation.navigate('DeckView', {
+                                deckName: this.state.deckName,
+                                title: this.props.screenProps.decks[this.state.deckName].title
+                            })
+                        }, 500)
                     }}
                     >
                     <Text>Submit</Text>
@@ -28,4 +35,4 @@ class AddDeck extends React.Component {
     }
 }
 
-export default createStackNavigator({ AddDeck: AddDeck });
+export default AddDeck

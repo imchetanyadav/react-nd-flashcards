@@ -1,30 +1,27 @@
-import React from 'react'
-import { createBottomTabNavigator } from 'react-navigation'
-import {Ionicons} from '@expo/vector-icons'
+import { createStackNavigator } from 'react-navigation'
 import Dashboard from './Dashboard'
-import AddDeck from './AddDeck'
+import DeckView from './DeckView'
+import AddCard from './AddCard'
+import Quiz from './Quiz'
 
-export default createBottomTabNavigator(
-    {
-      Decks: Dashboard,
-      AddDeck: AddDeck,
-    },
-    {
+export default createStackNavigator(
+  {
+      Flashcards: Dashboard,
+      DeckView: DeckView,
+      AddCard: AddCard,
+      Quiz: Quiz,
+  },
+  {
+      initialRouteName: 'Flashcards',
       navigationOptions: ({ navigation }) => ({
-        tabBarIcon: ({ focused, horizontal, tintColor }) => {
-          const { routeName } = navigation.state;
-          let iconName;
-          if (routeName === 'Decks') {
-            iconName = `md-list-box`;
-          } else if (routeName === 'AddDeck') {
-            iconName = `ios-add-circle${focused ? '' : '-outline'}`;
-          }
-          return <Ionicons name={iconName} size={horizontal ? 20 : 25} color={tintColor} />;
-        },
-      }),
-      tabBarOptions: {
-        activeTintColor: 'tomato',
-        inactiveTintColor: 'gray',
-      },
-    }
+          title: (navigation.state.params && navigation.state.params.title ) ? navigation.state.params.title : navigation.state.routeName,
+          headerStyle: {
+              backgroundColor: '#f4511e',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+      })
+  }
 );

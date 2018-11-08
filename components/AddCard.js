@@ -9,7 +9,6 @@ class AddCard extends React.Component {
     render() {
         return (
             <View>
-                <Text>AddCard</Text>
                 <TextInput
                     style={{height: 40}}
                     placeholder="Question"
