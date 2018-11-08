@@ -1,6 +1,7 @@
 import React from 'react'
 import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import CardFlip from 'react-native-card-flip';
+import { styles } from '../helpers/styles';
 
 class Quiz extends React.Component {
     state = {
@@ -21,27 +22,34 @@ class Quiz extends React.Component {
     }
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 {this.state.counter < this.state.questions.length ?
-                    <View style={styles.container}>
-                        <Text>{`${this.state.counter+1}/${this.state.questions.length}`}</Text>
-                        <CardFlip style={styles.cardContainer} ref={(card) => this.card = card} >
-                            <TouchableOpacity style={[styles.card, styles.card1]} onPress={() => {this.card.flip(); this.toggleAnswerVisible();}} >
-                                <Text>{this.state.questions[this.state.counter].question}</Text>
-                                <Text>{this.state.answerVisible ? 'Question' : 'Answer'}</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={[styles.card, styles.card2]} onPress={() => {this.card.flip(); this.toggleAnswerVisible();}} >
-                                <Text>{this.state.questions[this.state.counter].answer}</Text>
-                                <Text>{this.state.answerVisible ? 'Question' : 'Answer'}</Text>
-                            </TouchableOpacity>
-                        </CardFlip>
-                
+                    <View style={{flexGrow: 1}}>
+                        <Text style={{textAlign: 'center', marginTop: 12}}>{`${this.state.counter+1}/${this.state.questions.length}`}</Text>
+                        <View style={quizStyles.container}>
+                            <CardFlip style={quizStyles.cardContainer} ref={(card) => this.card = card} >
+                                <TouchableOpacity style={[quizStyles.card, quizStyles.card1]} onPress={() => {this.card.flip(); this.toggleAnswerVisible();}} >
+                                    <Text style={quizStyles.label}>{this.state.questions[this.state.counter].question}</Text>
+                                    <Text>View Answer</Text>
+                                </TouchableOpacity>
+                                <TouchableOpacity style={[quizStyles.card, quizStyles.card2]} onPress={() => {this.card.flip(); this.toggleAnswerVisible();}} >
+                                    <Text style={quizStyles.label}>{this.state.questions[this.state.counter].answer}</Text>
+                                    <Text>View Question</Text>
+                                </TouchableOpacity>
+                            </CardFlip>
+                        </View>
                         <View>
-                            <TouchableOpacity onPress={() => { this.handleAnswerChoice(true) }} >
-                                <Text>Correct</Text>
+                            <TouchableOpacity
+                                style={[styles.button, {backgroundColor: 'green'}]}
+                                onPress={() => { this.handleAnswerChoice(true) }}
+                            >
+                                <Text style={styles.buttonText}>Correct</Text>
                             </TouchableOpacity>
-                            <TouchableOpacity onPress={() => { this.handleAnswerChoice(false) }} >
-                                <Text>Incorrect</Text>
+                            <TouchableOpacity
+                                style={[styles.button, {backgroundColor: 'red'}]} 
+                                onPress={() => { this.handleAnswerChoice(false) }}
+                            >
+                                <Text style={styles.buttonText}>Incorrect</Text>
                             </TouchableOpacity>
                         </View>
                     </View>
@@ -55,20 +63,19 @@ class Quiz extends React.Component {
     }
 }
 
-const styles = StyleSheet.create({
+const quizStyles = StyleSheet.create({
     container: {
-    //   flex: 1,
+      flexGrow: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#F5FCFF',
     },
     cardContainer:{
       width: 320,
-      height: 470,
+      height: 350
     },
     card:{
       width: 320,
-      height: 470,
+      height: 320,
       backgroundColor: '#FE474C',
       borderRadius: 5,
       shadowColor: 'rgba(0,0,0,0.5)',
@@ -77,6 +84,8 @@ const styles = StyleSheet.create({
         height: 1
       },
       shadowOpacity:0.5,
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     card1: {
       backgroundColor: '#FE474C',
@@ -85,12 +94,10 @@ const styles = StyleSheet.create({
       backgroundColor: '#FEB12C',
     },
     label: {
-      lineHeight: 470,
       textAlign: 'center',
-      fontSize: 55,
+      fontSize: 28,
       fontFamily: 'System',
       color: '#ffffff',
-      backgroundColor: 'transparent',
     },
   });
 
