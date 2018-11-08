@@ -59,30 +59,38 @@ class Quiz extends React.Component {
                     </View>
                 : 
                     <View style={{flexGrow: 1}}>
-                        <View style={[quizStyles.container,{flexGrow: 1}]}>
-                            {this.state.score >= this.state.questions.length/2 ?
-                                <Ionicons name='ios-checkmark-circle' size={80} color='green' />
-                            :
-                                <Ionicons name='ios-close-circle' size={80} color='red' />
-                            }
-                            <Text style={styles.title}>You've got {this.state.score} out of {this.state.questions.length} questions correct ({(this.state.score/this.state.questions.length)*100}%)</Text>
-                        </View>
-                        <View style={{width: '100%'}}>
-                            <TouchableOpacity
-                                style={[styles.button, {backgroundColor: 'white'}]}
-                                onPress={() => this.resetQuiz()}
-                            >
-                                <Text style={[styles.buttonText, {color: 'black'}]}>Restart Quiz</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity
-                                style={[styles.button]}
-                                onPress={() => { 
-                                    this.props.navigation.goBack()
-                                }}
-                            >
-                                <Text style={styles.buttonText}>Back to Deck</Text>
-                            </TouchableOpacity>
-                        </View>
+                        {this.state.questions.length === 0 ? 
+                            <View style={[quizStyles.container,{flexGrow: 1}]}>
+                                <Text style={styles.title}>Please add some cards to deck</Text>
+                            </View>
+                        :
+                            <View style={{flexGrow: 1}}>
+                                <View style={[quizStyles.container,{flexGrow: 1}]}>
+                                    {this.state.score >= this.state.questions.length/2 ?
+                                        <Ionicons name='ios-checkmark-circle' size={80} color='green' />
+                                    :
+                                        <Ionicons name='ios-close-circle' size={80} color='red' />
+                                    }
+                                    <Text style={styles.title}>You've got {this.state.score} out of {this.state.questions.length} questions correct ({(this.state.score/this.state.questions.length)*100}%)</Text>
+                                </View>
+                                <View style={{width: '100%'}}>
+                                    <TouchableOpacity
+                                        style={[styles.button, {backgroundColor: 'white'}]}
+                                        onPress={() => this.resetQuiz()}
+                                    >
+                                        <Text style={[styles.buttonText, {color: 'black'}]}>Restart Quiz</Text>
+                                    </TouchableOpacity>
+                                    <TouchableOpacity
+                                        style={[styles.button]}
+                                        onPress={() => { 
+                                            this.props.navigation.goBack()
+                                        }}
+                                    >
+                                        <Text style={styles.buttonText}>Back to Deck</Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </View>
+                        }
                     </View>
                 }
             </View>
