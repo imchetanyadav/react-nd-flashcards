@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 
 class AddDeck extends React.Component {
     state = {
@@ -7,7 +8,7 @@ class AddDeck extends React.Component {
     }
     render() {
         return (
-            <View style={{marginTop: 40}}>
+            <View>
                 <Text>AddDeck</Text>
                 <Text>What is the title of your new deck?</Text>
                 <TextInput
@@ -27,4 +28,4 @@ class AddDeck extends React.Component {
     }
 }
 
-export default AddDeck;
+export default createStackNavigator({ AddDeck: AddDeck });

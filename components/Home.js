@@ -2,7 +2,6 @@ import React from 'react'
 import { createBottomTabNavigator } from 'react-navigation'
 import {Ionicons} from '@expo/vector-icons'
 import Dashboard from './Dashboard'
-import DeckView from './DeckView'
 import AddDeck from './AddDeck'
 
 export default createBottomTabNavigator(

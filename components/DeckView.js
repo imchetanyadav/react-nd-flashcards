@@ -1,10 +1,10 @@
 import React from 'react'
 import { StyleSheet, Text, View, Alert, TouchableOpacity } from 'react-native';
 
-const DeckView = () => (
+const DeckView = props => (
     <View>
-        <Text>Deck Title</Text>
-        <Text>3 cards</Text>
+        <Text>{props.navigation.state.params.deck.title}</Text>
+        <Text>{props.navigation.state.params.deck.questions.length} cards</Text>
 
         <View>
         <TouchableOpacity
