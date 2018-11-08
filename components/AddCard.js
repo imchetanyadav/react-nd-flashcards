@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { styles } from '../helpers/styles';
 
 class AddCard extends React.Component {
     state = {
@@ -10,21 +11,22 @@ class AddCard extends React.Component {
         return (
             <View>
                 <TextInput
-                    style={{height: 40}}
+                    style={styles.formInput}
                     placeholder="Question"
                     onChangeText={(text) => this.setState({question: text})}
                 />
                 <TextInput
-                    style={{height: 40}}
+                    style={styles.formInput}
                     placeholder="Answer"
                     onChangeText={(text) => this.setState({answer: text})}
                 />
                 <TouchableOpacity
+                    style={styles.button}
                     onPress={() => {
                         this.props.screenProps.addCard(this.props.navigation.state.params.deckName, this.state.question, this.state.answer)
                     }}
                     >
-                    <Text>Submit</Text>
+                    <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
             </View>
         )
