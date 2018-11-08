@@ -3,11 +3,15 @@ import { Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from '../helpers/styles';
 
 class AddDeck extends React.Component {
-    static navigationOptions = {
-        title: 'Add Deck',
-    };
     state = {
         deckName: ''
+    }
+    navigateToDeck = () => {
+        this.setState({ deckName: '' })
+        this.props.navigation.navigate('DeckView', {
+            deckName: this.state.deckName,
+            title: this.props.screenProps.decks[this.state.deckName].title
+        })
     }
     render() {
         return (
@@ -20,16 +24,8 @@ class AddDeck extends React.Component {
                 />
                 <TouchableOpacity
                     style={styles.button}
-                    onPress={() => {
-                        this.props.screenProps.addDeck(this.state.deckName)
-                        setTimeout(() => {
-                            this.props.navigation.navigate('DeckView', {
-                                deckName: this.state.deckName,
-                                title: this.props.screenProps.decks[this.state.deckName].title
-                            })
-                        }, 500)
-                    }}
-                    >
+                    onPress={() => this.props.screenProps.addDeck(this.state.deckName, this.navigateToDeck)}
+                >
                     <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
             </View>
