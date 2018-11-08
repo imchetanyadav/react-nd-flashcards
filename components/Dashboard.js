@@ -1,28 +1,55 @@
 import React from 'react'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, FlatList, Text, TouchableOpacity, View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import {Ionicons} from '@expo/vector-icons'
 import AddDeck from './AddDeck'
 
 const Dashboard = props => (
     <View>
-        {Object.keys(props.screenProps.decks).map(key => (
-            <View key={key}>
+        <FlatList
+          data={Object.keys(props.screenProps.decks).map(key => ({
+              key: props.screenProps.decks[key].title,
+              title: props.screenProps.decks[key].title,
+              questions: props.screenProps.decks[key].questions
+          }))}
+          renderItem={({item}) => (
+            <View style={[styles.deck]}>
                 <TouchableOpacity
                     onPress={() => {
                         props.navigation.navigate('DeckView', {
-                            deckName: key,
-                            title: props.screenProps.decks[key].title
+                            deckName: item.key,
+                            title: item.title
                         })
                     }}
                 >
-                    <Text>{props.screenProps.decks[key].title}</Text>
-                    <Text>{props.screenProps.decks[key].questions.length} cards</Text>
+                    <Text style={styles.deckTitle}>{item.title}</Text>
+                    <Text style={styles.deckSubtitle}>{item.questions.length} cards</Text>
                 </TouchableOpacity>
             </View>
-        ))}
+          )}
+        />
     </View>
 )
+
+const styles = StyleSheet.create({
+    deck: {
+        borderTopColor: '#cccccc',
+        borderTopWidth: 1,
+        paddingBottom: 18,
+        paddingLeft: 12,
+        paddingRight: 12,
+        paddingTop: 18
+    },
+    deckTitle: {
+        fontSize: 20,
+        paddingBottom: 3
+    },
+    deckSubtitle: {
+        color: '#ced0d0'
+    }
+});
+
+
 export default createBottomTabNavigator(
     {
       Decks: Dashboard,
