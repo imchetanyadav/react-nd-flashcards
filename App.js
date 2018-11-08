@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Alert } from 'react-native';
 import Home from './components/Home';
-import { getDecks, saveDeckTitle } from './helpers/storage'
+import { getDecks, saveDeckTitle, addCardToDeck } from './helpers/storage'
 
 export default class App extends React.Component {
   state = {
@@ -23,15 +23,21 @@ export default class App extends React.Component {
       Alert.alert('Deck could not added');
     })
   }
-  addCard = (deckName, question, answer) => {
-    this.setState( prevState => ({ decks: {
-      ...prevState.decks,
-      [deckName]: {
-        ...prevState.decks[deckName],
-        questions: prevState.decks[deckName].questions.concat({ question, answer }),
-      }
-    }}))
-    Alert.alert('Card Added');
+  addCard = (deckName, question, answer, callback) => {
+    addCardToDeck(deckName, { question, answer }).then(() => {
+      this.setState( prevState => ({ decks: {
+        ...prevState.decks,
+        [deckName]: {
+          ...prevState.decks[deckName],
+          questions: prevState.decks[deckName].questions.concat({ question, answer }),
+        }
+      }}))
+      Alert.alert('Card Added');
+      callback();
+    }).catch(error => {
+      console.log(error)
+      Alert.alert('Card could not added');
+    })
   }
 
   componentDidMount(){
