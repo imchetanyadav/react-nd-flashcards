@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import CardFlip from 'react-native-card-flip';
 import {Ionicons} from '@expo/vector-icons'
 import { styles } from '../helpers/styles';
+import { clearLocalNotification, setLocalNotification } from '../helpers/notifications'
 
 class Quiz extends React.Component {
     state = {
@@ -23,6 +24,10 @@ class Quiz extends React.Component {
     }
     resetQuiz = () => {
         this.setState({ counter: 0, score: 0, answerVisible: false })
+    }
+
+    componentDidMount() {
+        clearLocalNotification().then(setLocalNotification)
     }
     render() {
         return (

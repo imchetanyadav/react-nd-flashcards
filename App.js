@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Alert } from 'react-native';
 import Home from './components/Home';
 import { getDecks, saveDeckTitle, addCardToDeck } from './helpers/storage'
+import { setLocalNotification } from './helpers/notifications'
 
 export default class App extends React.Component {
   state = {
@@ -41,6 +42,7 @@ export default class App extends React.Component {
   }
 
   componentDidMount(){
+    setLocalNotification()
     getDecks().then(decks => {
       this.setState({ decks })
     })
