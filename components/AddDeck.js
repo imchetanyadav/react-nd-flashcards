@@ -6,7 +6,7 @@ class AddDeck extends React.Component {
     state = {
         deckName: ''
     }
-    navigateToDeck = () => {
+    navigateToDeck = () => { // navigate to deck view after new deck added
         const deckName = this.state.deckName
         this.setState({ deckName: '' })
         this.props.navigation.navigate('DeckView', {

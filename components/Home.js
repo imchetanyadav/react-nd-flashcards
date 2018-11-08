@@ -14,7 +14,7 @@ export default createStackNavigator(
   {
       initialRouteName: 'Flashcards',
       navigationOptions: ({ navigation }) => ({
-          title: (navigation.state.params && navigation.state.params.title ) ? navigation.state.params.title : navigation.state.routeName,
+          title: (navigation.state.params && navigation.state.params.title ) ? navigation.state.params.title : navigation.state.routeName, // Add header title from title prop if there otherwise router name
           headerStyle: {
               backgroundColor: '#f4511e',
             },

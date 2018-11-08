@@ -3,11 +3,11 @@ import { AsyncStorage } from 'react-native'
 
 const NOTIFICATION_KEY = 'MobileFlashCards:notifications'
 
-export function clearLocalNotification() {
+export function clearLocalNotification() { // Clear all local notifications
     return AsyncStorage.removeItem(NOTIFICATION_KEY).then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
-export function createNotification() {
+export function createNotification() { // Notification config
     return {
         title: 'Test your memory',
         body: 'Attempt a quiz now',
@@ -24,7 +24,7 @@ export function createNotification() {
 
 }
 
-export function setLocalNotification() {
+export function setLocalNotification() { // Set local notification if not set
     AsyncStorage.getItem(NOTIFICATION_KEY).then(JSON.parse).then(data => {
         if(data === null){
             Permissions.askAsync(Permissions.NOTIFICATIONS).then(({ status }) => {

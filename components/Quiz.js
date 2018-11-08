@@ -32,7 +32,7 @@ class Quiz extends React.Component {
     render() {
         return (
             <View style={styles.container}>
-                {this.state.counter < this.state.questions.length ?
+                {this.state.counter < this.state.questions.length ? // Quiz Attemp screen
                     <View style={{flexGrow: 1}}>
                         <Text style={{textAlign: 'center', marginTop: 12}}>{`${this.state.counter+1}/${this.state.questions.length}`}</Text>
                         <View style={quizStyles.container}>
@@ -64,11 +64,11 @@ class Quiz extends React.Component {
                     </View>
                 : 
                     <View style={{flexGrow: 1}}>
-                        {this.state.questions.length === 0 ? 
+                        {this.state.questions.length === 0 ? // No cards added to deck
                             <View style={[quizStyles.container,{flexGrow: 1}]}>
                                 <Text style={styles.title}>Please add some cards to deck</Text>
                             </View>
-                        :
+                        : // Quiz result screen
                             <View style={{flexGrow: 1}}>
                                 <View style={[quizStyles.container,{flexGrow: 1}]}>
                                     {this.state.score >= this.state.questions.length/2 ?

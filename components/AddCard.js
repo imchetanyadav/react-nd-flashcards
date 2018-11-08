@@ -7,7 +7,7 @@ class AddCard extends React.Component {
         question: '',
         answer: ''
     }
-    cardAdded = () => {
+    cardAdded = () => { // reset input after card added successfuly
         this.setState({ question: '', answer: '' })
     }
     render() {
