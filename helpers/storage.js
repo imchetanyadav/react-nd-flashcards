@@ -1,6 +1,6 @@
 import { AsyncStorage } from 'react-native'
 
-const STORAGE_KEY = 'TEMPMobileFlashCards'
+const STORAGE_KEY = 'MobileFlashCards'
 
 export function getDecks() { // Get decks from AsyncStorage
     return AsyncStorage.getItem(STORAGE_KEY).then(results => JSON.parse(results))
