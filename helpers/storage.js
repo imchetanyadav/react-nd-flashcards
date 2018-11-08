@@ -6,6 +6,13 @@ export function getDecks() {
     return AsyncStorage.getItem(STORAGE_KEY).then(results => JSON.parse(results))
 }
 
+export function getDeck(id) {
+    return AsyncStorage.getItem(STORAGE_KEY).then(results => {
+        const data = JSON.parse(results)
+        return data[id];
+    })
+}
+
 export function saveDeckTitle(title) {
     return AsyncStorage.mergeItem(STORAGE_KEY, JSON.stringify({
         [title]: {
