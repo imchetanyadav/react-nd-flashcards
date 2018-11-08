@@ -44,7 +44,8 @@ export default class App extends React.Component {
   componentDidMount(){
     setLocalNotification() // set local notifications
     getDecks().then(decks => { // get decks from AsyncStorage
-      this.setState({ decks })
+      if(decks !== null)
+        this.setState({ decks })
     })
   }
 
