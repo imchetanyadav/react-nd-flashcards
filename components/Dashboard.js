@@ -2,6 +2,8 @@ import React from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import DeckView from './DeckView'
+import AddCard from './AddCard'
+import Quiz from './Quiz'
 
 const Dashboard = props => (
     <View>
@@ -11,7 +13,7 @@ const Dashboard = props => (
                 <TouchableOpacity
                     onPress={() => {
                         props.navigation.navigate('DeckView', {
-                            deck: props.screenProps.decks[key],
+                            deckName: key,
                         })
                     }}
                 >
@@ -27,6 +29,8 @@ export default createStackNavigator(
     {
         Dashboard: Dashboard,
         DeckView: DeckView,
+        AddCard: AddCard,
+        Quiz: Quiz,
     },
     {
         initialRouteName: 'Dashboard',

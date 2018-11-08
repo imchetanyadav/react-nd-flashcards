@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, TextInput, TouchableOpacity, View, Alert } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
 class AddCard extends React.Component {
     state = {
@@ -22,8 +22,7 @@ class AddCard extends React.Component {
                 />
                 <TouchableOpacity
                     onPress={() => {
-                        this.props.addCard('deck1', this.state.question, this.state.answer)
-                        // Alert.alert(`${this.state.question} - ${this.state.answer}`);
+                        this.props.screenProps.addCard(this.props.navigation.state.params.deckName, this.state.question, this.state.answer)
                     }}
                     >
                     <Text>Submit</Text>

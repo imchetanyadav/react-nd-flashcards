@@ -1,10 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, Alert } from 'react-native';
-import Dashboard from './components/Dashboard'
-import DeckView from './components/DeckView'
-import AddDeck from './components/AddDeck'
-import AddCard from './components/AddCard'
-import Quiz from './components/Quiz'
+import { StyleSheet, Alert } from 'react-native';
 import Home from './components/Home';
 
 export default class App extends React.Component {
@@ -35,15 +30,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Home screenProps={{decks: this.state.decks, addDeck: this.addDeck}} />
-      // <View style={styles.container}>
-      //   <Text>App js</Text>
-      //   <Dashboard decks={this.state.decks} />
-      //   <AddDeck addDeck={this.addDeck} />
-      //   <DeckView />
-      //   <AddCard addCard={this.addCard} />
-      //   <Quiz />
-      // </View>
+      <Home screenProps={{decks: this.state.decks, addDeck: this.addDeck, addCard: this.addCard}} />
     );
   }
 }
