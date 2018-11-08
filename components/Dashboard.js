@@ -14,6 +14,7 @@ const Dashboard = props => (
                     onPress={() => {
                         props.navigation.navigate('DeckView', {
                             deckName: key,
+                            title: props.screenProps.decks[key].title
                         })
                     }}
                 >
@@ -27,12 +28,22 @@ const Dashboard = props => (
 
 export default createStackNavigator(
     {
-        Dashboard: Dashboard,
+        Flashcards: Dashboard,
         DeckView: DeckView,
         AddCard: AddCard,
         Quiz: Quiz,
     },
     {
-        initialRouteName: 'Dashboard',
+        initialRouteName: 'Flashcards',
+        navigationOptions: ({ navigation }) => ({
+            title: (navigation.state.params && navigation.state.params.title ) ? navigation.state.params.title : navigation.state.routeName,
+            headerStyle: {
+                backgroundColor: '#f4511e',
+              },
+              headerTintColor: '#fff',
+              headerTitleStyle: {
+                fontWeight: 'bold',
+              },
+        })
     }
 );

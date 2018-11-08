@@ -11,6 +11,7 @@ const DeckView = props => (
             onPress={() => { 
                 props.navigation.navigate('AddCard', {
                     deckName: props.navigation.state.params.deckName,
+                    title: 'Add Card'
                 })
             }}
         >
@@ -20,6 +21,7 @@ const DeckView = props => (
             onPress={() => { 
                 props.navigation.navigate('Quiz', {
                     deckName: props.navigation.state.params.deckName,
+                    title: 'Quiz'
                 })
             }}
         >
