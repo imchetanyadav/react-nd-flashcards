@@ -13,12 +13,16 @@ const DeckView = props => (
                     deckName: props.navigation.state.params.deckName,
                 })
             }}
-            >
+        >
             <Text>Add Card</Text>
         </TouchableOpacity>
         <TouchableOpacity
-            onPress={() => { props.navigation.navigate('Quiz') }}
-            >
+            onPress={() => { 
+                props.navigation.navigate('Quiz', {
+                    deckName: props.navigation.state.params.deckName,
+                })
+            }}
+        >
             <Text>Start Quiz</Text>
         </TouchableOpacity>
         </View>
