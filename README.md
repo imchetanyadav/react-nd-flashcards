@@ -10,7 +10,7 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 ├── .babelrc # babel config.
 ├── App.js # app starting point.
 ├── app.json # app config.
-├── App.text.js # app test file.
+├── App.test.js # app test file.
 ├── package.json # Package manager file.
 ├── README.md - This file.
 ├── helpers
