@@ -9,7 +9,7 @@ class AddCard extends React.Component {
     }
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <TextInput
                     style={styles.formInput}
                     placeholder="Question"

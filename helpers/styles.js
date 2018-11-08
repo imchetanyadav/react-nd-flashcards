@@ -7,6 +7,12 @@ export const styles = StyleSheet.create({
         textAlign: 'center',
         padding: 12
     },
+    subtitle: {
+        color: '#ced0d0',
+        fontSize: 16,
+        textAlign: 'center',
+        padding: 5
+    },
     container: {
         flex: 1
     },

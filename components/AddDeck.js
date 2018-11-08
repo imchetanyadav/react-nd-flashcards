@@ -11,7 +11,7 @@ class AddDeck extends React.Component {
     }
     render() {
         return (
-            <View>
+            <View style={styles.container}>
                 <Text style={styles.title}>What is the title of your new deck?</Text>
                 <TextInput
                     style={styles.formInput}
