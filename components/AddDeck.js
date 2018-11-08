@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { styles } from '../helpers/styles';
 
 class AddDeck extends React.Component {
     static navigationOptions = {
@@ -11,13 +12,14 @@ class AddDeck extends React.Component {
     render() {
         return (
             <View>
-                <Text>What is the title of your new deck?</Text>
+                <Text style={styles.title}>What is the title of your new deck?</Text>
                 <TextInput
-                    style={{height: 40}}
-                    placeholder="Dock Title"
+                    style={styles.formInput}
+                    placeholder="Deck Title"
                     onChangeText={(text) => this.setState({deckName: text})}
                 />
                 <TouchableOpacity
+                    style={styles.button}
                     onPress={() => {
                         this.props.screenProps.addDeck(this.state.deckName)
                         setTimeout(() => {
@@ -28,7 +30,7 @@ class AddDeck extends React.Component {
                         }, 500)
                     }}
                     >
-                    <Text>Submit</Text>
+                    <Text style={styles.buttonText}>Submit</Text>
                 </TouchableOpacity>
             </View>
         )
