@@ -4,6 +4,7 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 * scan QR code with expo app and enjoy
+* Tested on Redmi Note 3 (Android Oreo)
 
 ## Folder Structure
 ```bash
